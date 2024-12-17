@@ -1,11 +1,9 @@
 <?php
 require "functions.php";
-//require "router.php";
+require "router.php";
 require "Database.php";
+$config = require "config.php";
 
-$db = new Database();
-$posts=$db->query("SELECT * FROM posts");
+$id = $_GET["id"];
 
-foreach ($posts as $post) {
-    echo "<li>{$post['title']}</li>" ;
-}
+$db = new Database($config["database"]);
