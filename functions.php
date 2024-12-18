@@ -8,7 +8,7 @@ function dd($value)
 
     die();
 }
-function abort($code=404)
+function abort($code = 404)
 {
 
     http_response_code($code);
@@ -18,6 +18,14 @@ function abort($code=404)
     die();
 
 }
-function urlIs($value) {
+function urlIs($value)
+{
     return $_SERVER['REQUEST_URI'] === $value;
+}
+
+function authorize($condition,$status=Response::FORBIDDEN)
+{
+  if (!$condition){
+    abort($status);
+  }
 }
