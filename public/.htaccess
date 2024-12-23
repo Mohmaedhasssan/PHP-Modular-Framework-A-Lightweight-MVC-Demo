@@ -1,5 +1,5 @@
 RewriteEngine On
-RewriteBase /Demo/
+#RewriteBase /Demo/
 
 # Route all requests to index.php
 RewriteCond %{REQUEST_FILENAME} !-f
