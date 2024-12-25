@@ -15,7 +15,7 @@ function abort($code = 404)
 
   http_response_code($code);
 
-  require "views/{$code}.php";  // ToDo : Check for $code view if exists
+  view("{$code}.php");  // ToDo : Check for $code view if exists
 
   die();
 }
