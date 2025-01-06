@@ -48,6 +48,7 @@ function login($user)
 {
   $_SESSION['user'] = [
     'email' => $user['email'],
+    'id' => $user['id']
   ];
   
   session_regenerate_id(true);
