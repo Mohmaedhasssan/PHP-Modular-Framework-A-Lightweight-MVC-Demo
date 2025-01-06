@@ -5,8 +5,6 @@ use Core\Validator;
 use Core\App;
 
 $db=App::resolve(Database::class);
-
-$currentUserId = 1;
 $errors = [];
 
 //find the corrisponding note
@@ -20,7 +18,7 @@ if (!Validator::string($_POST['body'],1,1000)) {
 }
 
 //User Aurhorization
-authorize($note['user_id'] == $currentUserId);
+authorize($note['user_id'] == $_SESSION['user']['id']);
 
 
 
