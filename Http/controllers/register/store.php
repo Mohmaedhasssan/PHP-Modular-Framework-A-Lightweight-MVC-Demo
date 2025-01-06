@@ -2,27 +2,20 @@
 
 use Core\App;
 use Core\Database;
-use Core\Validator;
+use Http\Forms\RegistrationForm;
 
 $email = $_POST['email'];
 $password = $_POST['password'];
 
-$errors = [];
 
-//validation
-if (! Validator::email($email)) {
-    $errors['email'] = 'Provide a valid email';
-}
 
-if (! Validator::string($password, 7, 255)) {
-    $errors['password'] = 'Provide a valid password that is > 7 characters';
-}
-
-if (! empty($errors)) {
+if (! RegistrationForm::validate($email, $password))
+{
     return view('register/create.view.php', [
-        'errors' => $errors
+        'errors' => RegistrationForm::errors()
     ]);
 }
+
 
 $db = App::resolve(Database::class);
 //check if user exist
