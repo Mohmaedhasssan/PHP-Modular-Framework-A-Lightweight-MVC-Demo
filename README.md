@@ -8,7 +8,6 @@ This repository is a lightweight PHP-based Model-View-Controller (MVC) framework
 - **Routing**: Built-in routing for handling requests.
 - **Database Support**: Configuration for database integration with PHP Data Objects (PDO).
 - **Scalable Architecture**: Designed for easy extension and modular development.
-- **Bootstrap System**: Initializes the app with dependency injection.
 
 ## Directory Structure
 
