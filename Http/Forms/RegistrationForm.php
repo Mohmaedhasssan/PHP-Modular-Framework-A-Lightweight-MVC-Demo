@@ -6,20 +6,21 @@ use Core\Validator;
 
 class RegistrationForm extends Form
 {   
+    public $errors = [];
     private $MinPasswordLength = 7;
     private $MaxPasswordLength = 255;
 
-    public static function validate($email, $password)
+    public function validate($email, $password)
     {
         if (!Validator::email($email)) {
-            self::$errors['email'] = 'Provide a valid email';
+            $this->errors['email'] = 'Provide a valid email';
         }
 
-        if (!Validator::string($password, self::$MinPasswordLength, self::$MaxPasswordLength)) {
-            self::$errors['password'] = 'Provide a valid password that is > 7 characters';
+        if (!Validator::string($password, $this->MinPasswordLength, $this->MaxPasswordLength)) {
+            $this->errors['password'] = 'Provide a valid password that is > 7 characters';
         }
 
-        return empty(self::$errors) ;
+        return empty($this->errors);
     }
 
 }
