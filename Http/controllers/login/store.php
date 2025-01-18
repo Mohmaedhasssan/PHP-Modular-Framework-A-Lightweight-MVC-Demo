@@ -1,6 +1,7 @@
 <?php
 
-use Demo\Core\Authenticator;
+use Core\Authenticator;
+use Core\Session;
 use Http\Forms\LoginForm;
 
 $loginForm = new LoginForm();
@@ -10,11 +11,13 @@ $password = $_POST['password'] ?? null;
 if ($loginForm->validate($email, $password)) {
     if ((new Authenticator)->attempt($password, $email)) {
         redirect('/');
-    } else {
-        $loginForm->AddError('email', 'Invalid email or password');
+        exit;
     }
+    
+    $loginForm->AddError('emailAndPassword', 'Invalid email or password');
 }
 
-return view('login/create.view.php', [
-    'errors' => $loginForm->errors
-]);
+Session::flash('errors', $loginForm->errors);
+Session::flash('old', ['email' => $email]);
+
+redirect('/login');

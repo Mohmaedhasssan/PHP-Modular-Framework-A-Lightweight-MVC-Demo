@@ -46,6 +46,11 @@ function view($path, $attributes = [])
 
 function redirect($path)
 {
-  header("Location {$path}");
+  header("Location: {$path}");
   die();  
+}
+
+function old($key,$default = null)
+{
+  return $_SESSION['_flash']['old'][$key] ?? $default;
 }

@@ -14,9 +14,9 @@ $router->patch('/note', 'notes/update.php')->only('auth');;
 $router->get('/note/create', 'notes/create.php')->only('auth');;
 $router->post('/notes', 'notes/store.php')->only('auth');;
 
-$router->get('/register', 'register/create.php')->only('guest');
-$router->post('/register', 'register/store.php')->only('guest');
+$router->get('/register', 'register/create.php');
+$router->post('/register', 'register/store.php');
 
-$router->get('/login', 'login/create.php')->only('guest');
-$router->post('/login', 'login/store.php')->only('guest');
-$router->delete('/login', 'login/destroy.php')->only('auth');
+$router->get('/login', 'login/create.php');
+$router->post('/login', 'login/store.php');
+$router->delete('/login', 'login/destroy.php');
