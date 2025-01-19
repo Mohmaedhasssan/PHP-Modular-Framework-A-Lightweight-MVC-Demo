@@ -7,13 +7,13 @@ use Core\Database;
 
 class Authenticator
 {
-    public function attempt($password, $email)
+    public function attempt($attributes)
     {
         $user = App::resolve(Database::class)->query('SELECT * FROM users WHERE email = :email', [
-            'email' => $email
+            'email' => $attributes['email']
         ])->find();
 
-        if (! $user || ! password_verify($password, $user['password'])) {
+        if (! $user || ! password_verify($attributes['password'], $user['password'])) {
            return false;
         }   
         

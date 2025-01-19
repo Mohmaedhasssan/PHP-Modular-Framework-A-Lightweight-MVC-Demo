@@ -2,7 +2,7 @@
 
 namespace Http\Forms;
 
-use Core\Validator;
+use Core\Validation\Validator;
 
 class RegistrationForm extends Form
 {   
