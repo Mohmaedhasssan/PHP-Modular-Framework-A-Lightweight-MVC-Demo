@@ -6,7 +6,7 @@ class Form
 {
     protected  $errors = [];
 
-    public  function validate($email, $password)
+    public static function validate($attributes)
     {
         // This method should be overridden in child classes
         throw new \Exception("Validate method not implemented");

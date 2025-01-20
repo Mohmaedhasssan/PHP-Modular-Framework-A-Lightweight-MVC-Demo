@@ -1,19 +1,19 @@
 <?php
 
-namespace Demo\Core;
+namespace Core;
 
 use Core\App;
 use Core\Database;
 
 class Authenticator
 {
-    public function attempt($password, $email)
+    public function attempt($attributes)
     {
         $user = App::resolve(Database::class)->query('SELECT * FROM users WHERE email = :email', [
-            'email' => $email
+            'email' => $attributes['email']
         ])->find();
 
-        if (! $user || ! password_verify($password, $user['password'])) {
+        if (! $user || ! password_verify($attributes['password'], $user['password'])) {
            return false;
         }   
         
@@ -35,18 +35,6 @@ class Authenticator
 
     public function logout()
     {
-        $_SESSION = [];
-        session_destroy();
-
-        $params = session_get_cookie_params();
-        setcookie(
-            session_name(),
-            '',
-            time() - 42000,
-            $params['path'],
-            $params['domain'],
-            $params['secure'],
-            $params['httponly']
-        );
+        Session::destroy();
     }
 }
