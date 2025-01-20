@@ -1,0 +1,16 @@
+{
+    "name": "mohamed_hassan/demo",
+    "authors": [
+        {
+            "name": "mohmead hasssan",
+            "email": "mohamed.hassan.official55@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Core\\": "Core/",
+            "Http\\": "Http/"
+        }
+    }
+}
